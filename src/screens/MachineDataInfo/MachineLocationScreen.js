@@ -1,0 +1,76 @@
+// import React from "react";
+// import { View, StyleSheet, Dimensions } from "react-native";
+// import MapView, { Marker } from "react-native-maps";
+
+// const Machine1Location = ({ lat, lon }) => {
+//   const machineLocation = {
+//     latitude: lat,
+//     longitude: lon,
+//     latitudeDelta: 0.0922,
+//     longitudeDelta: 0.0421,
+//   };
+
+//   return (
+//     <View style={styles.container}>
+//       <MapView style={styles.map} initialRegion={machineLocation}>
+//         <Marker coordinate={machineLocation} title="Machine is here!" />
+//       </MapView>
+//     </View>
+//   );
+// };
+
+// const styles = StyleSheet.create({
+//   container: {
+//     height: 310,
+//     width: Dimensions.get("window").width - 20,
+//     borderRadius: 8,
+//     overflow: "hidden",
+//   },
+//   map: {
+//     ...StyleSheet.absoluteFillObject,
+//   },
+// });
+
+// export default Machine1Location;
+
+import React from "react";
+import { View, StyleSheet, Dimensions } from "react-native";
+import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps"; // Keep PROVIDER_GOOGLE if using Google Maps
+
+const Machine1Location = ({ lat, lon }) => {
+  console.log(lat, lon, "lat lom is ");
+  const machineLocation = {
+    latitude: lat,
+    longitude: lon,
+    latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421,
+  };
+
+  return (
+    <View style={styles.container}>
+      <MapView
+        provider={PROVIDER_GOOGLE} // Remove if not using Google Maps
+        style={styles.map}
+        initialRegion={machineLocation}
+      >
+        <Marker coordinate={machineLocation} title="Machine is here!" />
+      </MapView>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    height: 310,
+    width: Dimensions.get("window").width - 20,
+    justifyContent: "flex-end",
+    alignItems: "center",
+    borderRadius: 8,
+    overflow: "hidden",
+  },
+  map: {
+    ...StyleSheet.absoluteFillObject,
+  },
+});
+
+export default Machine1Location;

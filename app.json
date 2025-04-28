@@ -1,0 +1,34 @@
+{
+  "expo": {
+    "name": "machine-monitoring-app",
+    "slug": "machine-monitoring-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/PSlogo.jpg",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/PSlogo.jpg",
+      "resizeMode": "contain",
+      "backgroundColor": "#111"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/PSlogo.jpg",
+        "backgroundColor": "#111"
+      },
+      "package": "com.gaurav19.machinemonitoringapp"
+    },
+    "web": {
+      "favicon": "./assets/PSlogo.jpg"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ec9119ec-a098-4efa-bbc5-5a949891f13e"
+      }
+    }
+  }
+}
