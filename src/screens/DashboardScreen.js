@@ -167,6 +167,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#121212",
+    marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
   cardsContainer: {
     flex: 1,

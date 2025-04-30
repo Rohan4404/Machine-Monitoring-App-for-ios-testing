@@ -116,12 +116,13 @@ import {
   Text,
   TouchableOpacity,
   Image,
+  StatusBar,
+  Platform,
 } from "react-native";
 import { useRoute, useNavigation } from "@react-navigation/native";
 import MachineLocationScreen from "../screens/MachineDataInfo/MachineLocationScreen";
 import { GraphData } from "../utlity/utlity"; // Adjust the import path as needed
 import Icon from "react-native-vector-icons/FontAwesome"; // Import FontAwesome Icon
-
 
 const MachineDataScreen = () => {
   const route = useRoute();
@@ -176,6 +177,7 @@ const styles = StyleSheet.create({
   container: {
     padding: 5,
     paddingBottom: 20,
+    marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     position: "relative", // Ensure positioning context for absolute back button
   },
   backButton: {

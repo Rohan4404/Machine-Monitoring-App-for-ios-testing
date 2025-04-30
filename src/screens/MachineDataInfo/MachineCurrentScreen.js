@@ -360,6 +360,8 @@ import {
   TouchableOpacity,
   Image,
   ActivityIndicator,
+  StatusBar,
+  Platform,
 } from "react-native";
 import { WebView } from "react-native-webview";
 import currentImg from "../../../assets/chartImages/3515462.jpg";
@@ -737,6 +739,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#111",
     width: "100%",
     minHeight: "100%",
+    marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
   scrollView: {
     backgroundColor: "black",

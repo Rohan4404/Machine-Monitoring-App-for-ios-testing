@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "machine-monitoring-app",
-    "slug": "machine-monitoring-app",
+    "name": "Power Sense",
+    "slug": "Power-Sense",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "icon": "./assets/iconn.png",
+    "userInterfaceStyle": "dark",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/PSlogo.jpg",
+      "image": "./assets/iconn.png",
       "resizeMode": "contain",
       "backgroundColor": "#111"
     },
@@ -17,17 +17,22 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/PSlogo.jpg",
+        "foregroundImage": "./assets/iconn.png",
         "backgroundColor": "#111"
       },
-      "package": "com.gaurav19.machinemonitoringapp"
+      "package": "com.gaurav19.machinemonitoringapp",
+      "statusBar": {
+        "backgroundColor": "#0f0f0f",
+        "barStyle": "light-content",
+        "translucent": false
+      }
     },
     "web": {
-      "favicon": "./assets/PSlogo.jpg"
+      "favicon": "./assets/iconn.png"
     },
     "extra": {
       "eas": {
-        "projectId": "ec9119ec-a098-4efa-bbc5-5a949891f13e"
+        "projectId": "18aeb465-cc3d-457b-a568-3131f17e330d"
       }
     }
   }

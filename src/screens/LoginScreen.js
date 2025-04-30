@@ -11,7 +11,9 @@ import {
   KeyboardAvoidingView,
   Platform,
   ScrollView,
+  StatusBar,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 import { loginUser } from "../apis/service";
 import bgimg from "../../assets/chartImages/7744161-removebg-preview.png";
@@ -35,13 +37,11 @@ const Login = () => {
 
     try {
       const userData = { email, password };
-
       const response = await loginUser(userData);
 
       console.log("API response:", response);
 
       if (response.token) {
-        // Save token and user ID
         await AsyncStorage.setItem("token", response.token);
         if (response.id) {
           await AsyncStorage.setItem("userId", response.id.toString());
@@ -49,7 +49,7 @@ const Login = () => {
         navigation.reset({
           index: 0,
           routes: [{ name: "Dashboard" }],
-        }); // Navigates and resets stack so user can't go back to login
+        });
       } else {
         Alert.alert("Error", response.error || "Invalid email or password.");
       }
@@ -63,68 +63,75 @@ const Login = () => {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <KeyboardAvoidingView
-        style={{ flex: 1, backgroundColor: "#0f0f0f" }}
-        behavior={Platform.OS === "ios" ? "padding" : undefined}
-      >
-        <ScrollView
-          contentContainerStyle={styles.container}
-          keyboardShouldPersistTaps="handled"
+      <SafeAreaView style={{ flex: 1, backgroundColor: "#0f0f0f" }}>
+        <KeyboardAvoidingView
+          style={{ flex: 1, backgroundColor: "#0f0f0f" }}
+          behavior={Platform.OS === "ios" ? "padding" : undefined}
         >
-          <Image source={bgimg} style={styles.image} />
-          <Text style={styles.title}>
-            Power <Text style={styles.sense}>Sense</Text>
-          </Text>
-
-          <View style={styles.formBox}>
-            <TextInput
-              placeholder="Email"
-              placeholderTextColor="#ccc"
-              style={styles.input}
-              value={email}
-              onChangeText={setEmail}
-              keyboardType="email-address"
-            />
-            <TextInput
-              placeholder="Password"
-              placeholderTextColor="#ccc"
-              style={styles.input}
-              value={password}
-              onChangeText={setPassword}
-              secureTextEntry
-            />
-
-            <TouchableOpacity
-              onPress={() => navigation.navigate("ForgotPassword")}
-              style={styles.forgotLink}
-            >
-              <Text style={styles.forgotText}>Forgot Password?</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              onPress={handleLogin}
-              style={styles.loginButton}
-              disabled={loading}
-            >
-              {loading ? (
-                <ActivityIndicator color="#fff" />
-              ) : (
-                <Text style={styles.loginText}>Login</Text>
-              )}
-            </TouchableOpacity>
-
-            <Text style={styles.signup}>
-              Don’t have an account?{" "}
-              <Text
-                style={styles.signupLink}
-                onPress={() => navigation.navigate("Signup")}
-              >
-                Sign Up
-              </Text>
+          <StatusBar
+            backgroundColor="#0f0f0f"
+            barStyle="light-content"
+            translucent={false}
+          />
+          <ScrollView
+            contentContainerStyle={styles.container}
+            keyboardShouldPersistTaps="handled"
+          >
+            <Image source={bgimg} style={styles.image} />
+            <Text style={styles.title}>
+              Power <Text style={styles.sense}>Sense</Text>
             </Text>
-          </View>
-        </ScrollView>
-      </KeyboardAvoidingView>
+
+            <View style={styles.formBox}>
+              <TextInput
+                placeholder="Email"
+                placeholderTextColor="#ccc"
+                style={styles.input}
+                value={email}
+                onChangeText={setEmail}
+                keyboardType="email-address"
+              />
+              <TextInput
+                placeholder="Password"
+                placeholderTextColor="#ccc"
+                style={styles.input}
+                value={password}
+                onChangeText={setPassword}
+                secureTextEntry
+              />
+
+              <TouchableOpacity
+                onPress={() => navigation.navigate("ForgotPassword")}
+                style={styles.forgotLink}
+              >
+                <Text style={styles.forgotText}>Forgot Password?</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                onPress={handleLogin}
+                style={styles.loginButton}
+                disabled={loading}
+              >
+                {loading ? (
+                  <ActivityIndicator color="#fff" />
+                ) : (
+                  <Text style={styles.loginText}>Login</Text>
+                )}
+              </TouchableOpacity>
+
+              <Text style={styles.signup}>
+                Don’t have an account?{" "}
+                <Text
+                  style={styles.signupLink}
+                  onPress={() => navigation.navigate("Signup")}
+                >
+                  Sign Up
+                </Text>
+              </Text>
+            </View>
+          </ScrollView>
+        </KeyboardAvoidingView>
+      </SafeAreaView>
     </TouchableWithoutFeedback>
   );
 };
@@ -154,15 +161,13 @@ const styles = StyleSheet.create({
   sense: {
     color: "#ffffff",
   },
-
   formBox: {
     width: "100%",
     backgroundColor: "#1a1a1a",
     padding: 24,
     borderRadius: 12,
     elevation: 6,
-    borderWidth: 1.5, // Add this
-    // borderColor: "#679797",  // #92F1F1 // Or white "#fff" for better contrast
+    borderWidth: 1.5,
   },
   input: {
     height: 48,

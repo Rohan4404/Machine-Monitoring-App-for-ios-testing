@@ -21,7 +21,7 @@ extensions.configure(com.facebook.react.ReactSettingsExtension) { ex ->
   }
 }
 
-rootProject.name = 'machine-monitoring-app'
+rootProject.name = 'Power Sense'
 
 dependencyResolutionManagement {
   versionCatalogs {

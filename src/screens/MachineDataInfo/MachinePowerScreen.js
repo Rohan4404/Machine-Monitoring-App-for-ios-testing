@@ -348,6 +348,8 @@ import {
   ScrollView,
   Image,
   ActivityIndicator,
+  StatusBar,
+  Platform,
 } from "react-native";
 import { WebView } from "react-native-webview";
 import powerImg from "../../../assets/chartImages/Rectangle 1.png";
@@ -726,6 +728,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#111",
     width: "100%",
     minHeight: "100%",
+    marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
   scrollView: {
     backgroundColor: "black",

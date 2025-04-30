@@ -34,7 +34,13 @@
 // export default Machine1Location;
 
 import React from "react";
-import { View, StyleSheet, Dimensions } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Dimensions,
+  StatusBar,
+  Platform,
+} from "react-native";
 import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps"; // Keep PROVIDER_GOOGLE if using Google Maps
 
 const Machine1Location = ({ lat, lon }) => {

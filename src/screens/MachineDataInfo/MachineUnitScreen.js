@@ -351,6 +351,8 @@ import {
   Dimensions,
   Image,
   ScrollView, // Import ScrollView
+  StatusBar,
+  Platform,
 } from "react-native";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { useRoute, useNavigation } from "@react-navigation/native";
@@ -607,6 +609,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#111",
     width: "100%",
     minHeight: "100%",
+    marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
   currentText: {
     fontSize: 28,
@@ -688,8 +691,8 @@ const styles = StyleSheet.create({
     padding: 12,
   },
   tableBody: {
-    maxHeight: "60%",
-    borderLeftWidth: 1,
+    maxHeight: "52%",
+    // borderLeftWidth: 1,
     borderColor: "#92F1F1",
   },
   noDataContainer: {
