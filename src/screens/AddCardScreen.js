@@ -123,7 +123,12 @@ const AddCard = () => {
         ]}
       >
         <Text style={styles.title}>Add Machine</Text>
-
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Dashboard")}
+          style={styles.closeButton}
+        >
+          <Text style={styles.closeText}>✕</Text>
+        </TouchableOpacity>
         <TextInput
           placeholder="Enter title"
           value={formData.title}
@@ -167,6 +172,21 @@ const AddCard = () => {
 export default AddCard;
 
 const styles = StyleSheet.create({
+  closeButton: {
+    position: "absolute",
+    top: 10,
+    right: 10,
+    zIndex: 1,
+    // backgroundColor: "#2A2F36",
+    borderRadius: 20,
+    padding: 10,
+  },
+  closeText: {
+    color: "#fff",
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+
   container: {
     flex: 1,
     backgroundColor: "rgba(13,17,23,0.8)",

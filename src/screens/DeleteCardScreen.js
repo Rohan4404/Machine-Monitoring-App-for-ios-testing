@@ -68,7 +68,7 @@ const DeleteCard = () => {
       <View style={styles.card}>
         <TouchableOpacity
           style={styles.closeBtn}
-          onPress={() => navigation.goBack()}
+          onPress={() => navigation.navigate("Dashboard")}
         >
           <Text style={{ fontSize: 20, color: "#aaa" }}>×</Text>
         </TouchableOpacity>
